@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Credit Risk Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>💳 Credit Risk Prediction System</h1>
+
+    <form method="POST" action="/predict">
+        <label>Credit Amount</label>
+        <input type="number" name="AMT_CREDIT" required>
+
+        <label>Total Income</label>
+        <input type="number" name="AMT_INCOME_TOTAL" required>
+
+        <label>Annuity</label>
+        <input type="number" name="AMT_ANNUITY">
+
+        <label>Goods Price</label>
+        <input type="number" name="AMT_GOODS_PRICE">
+
+        <label>Age (Years)</label>
+        <input type="number" name="AGE" required>
+
+        <label>Employment Duration (Years)</label>
+        <input type="number" name="EMPLOYMENT_YEARS">
+
+        <label>Previous Applications</label>
+        <input type="number" name="CNT_PREV_APPLICATIONS">
+
+        <label>Previous Rejections</label>
+        <input type="number" name="CNT_PREV_REJECTED">
+
+        <button type="submit">Predict Risk</button>
+    </form>
+
+    {% if risk_band %}
+    <div class="result {{ color }}">
+        <h2>Risk Assessment</h2>
+        <p><strong>Risk Level:</strong> {{ risk_band }}</p>
+        <p><strong>Risk Probability:</strong> {{ probability }}%</p>
+        <p><strong>Recommended Action:</strong> {{ action }}</p>
+    </div>
+    {% endif %}
+
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
