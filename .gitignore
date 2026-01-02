@@ -2,9 +2,12 @@
 venv/
 .env/
 
-# Data files
+# Raw & processed data
 data/raw/
 data/processed/
+
+# Logs
+logs/
 
 # Python cache
 __pycache__/
