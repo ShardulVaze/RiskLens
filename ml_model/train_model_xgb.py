@@ -27,7 +27,7 @@ model = XGBClassifier(
 model.fit(X_train, y_train)
 
 print("Evaluating Model")
-y_pred = (model.predict_proba(X_test)[:, 1] > 0.35).astype(int)
+y_pred = (model.predict_proba(X_test)[:, 1] > 0.25).astype(int)
 
 print(classification_report(y_test, y_pred))
 roc_auc = roc_auc_score(y_test, model.predict_proba(X_test)[:, 1])
